@@ -1,0 +1,89 @@
+html,
+body {
+  margin:0;
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+}
+#header{
+  margin:0;
+  padding:5px;
+  width: 100%;
+  background-color: lightgray;
+position:fixed;
+top:0;
+}
+
+
+#menu ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 60px;
+  overflow: hidden;
+  background-color: lightblue;
+  width: 100%;
+  font-size: 20px;
+  font-family:sans-serif;
+}
+#menu ul li{
+  float:left;
+
+}
+#menu ul li a{
+  display: block;
+  color: blue;
+  text-align: center;
+  padding: 15px 15px;
+  text-decoration: none;
+}
+
+#menu ul li a:hover{
+background-color: gray;
+}
+
+#etsi
+{
+  width: 450px;
+  padding: 5px;
+  -webkit-border-radius:25px;
+  -moz-border-radius:25px;
+  border-radius:25px;
+  border:none;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 100px;
+}
+
+#puskuri
+{
+  height: 110px;
+  background-color: lightgray;
+}
+.etusivu
+{
+  margin-left: 60px;
+  margin-right: 60px;
+}
+.kategoria1
+{
+  margin-left: 60px;
+  margin-right: 60px;
+}
+.kategoria2
+{
+  margin-left: 60px;
+  margin-right: 60px;
+}
+.kategoria3
+{
+  margin-left: 60px;
+  margin-right: 60px;
+}
+.ostoskori
+{
+  margin-left: 60px;
+  margin-right: 60px;
+}
