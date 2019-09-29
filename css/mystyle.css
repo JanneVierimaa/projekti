@@ -98,6 +98,7 @@ body {
 {
   margin-left: 80px;
   margin-right: 80px;
+  text-align: center;
 }
 
 .ostoskori
@@ -121,6 +122,13 @@ body {
 }
 
 .logout
+{
+  margin-left: 80px;
+  margin-right: 80px;
+  text-align: center;
+}
+
+.createuser
 {
   margin-left: 80px;
   margin-right: 80px;

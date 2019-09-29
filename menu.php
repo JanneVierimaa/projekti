@@ -24,7 +24,7 @@
       <ul>
     		<li><a href="index.php">etusivu</a></li>
     		<li><a href="tuote.php">tuotteet</a></li>
-    		<li><a href="add_user.php">rekisteröidy</a></li>
+    		<li><a href="create_user.php">rekisteröidy</a></li>
         <input type="text" id="etsi" placeholder="Etsi">
         <li style="float:right"><a href="ostoskori.php">ostoskori</a></li>
 
