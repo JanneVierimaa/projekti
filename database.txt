@@ -1,0 +1,39 @@
+create database projekti;
+
+use projekti;
+
+create table user(
+id_user INT auto_increment primary key,
+username VARCHAR(30),
+password VARCHAR(255)
+) Engine=InnoDB;
+
+
+ALTER TABLE user
+ADD CONSTRAINT username_ind UNIQUE KEY(username);
+
+insert into user value(1,'TestUser','TestPass');
+
+
+GRANT ALL ON projekti.* TO 'phpUser'@'localhost' IDENTIFIED BY 'phpPass';
+
+TÄHÄN ASTI ON TEHTY TOIMINNALLISUUS
+---------------------------------------------------------------------------
+create table products(
+id_products INT auto_increment primary key,
+name VARCHAR(50),
+image VARCHAR(50)
+) Engine=InnoDB;
+
+create table basket(
+id_basket INT auto_increment primary key,
+id_products INT,
+username VARCHAR(30),
+amount INT,
+foreign key(id_products) references products(id_products) on update cascade on delete restrict,
+foreign key(username) references user(username) on update cascade on delete restrict
+) Engine=InnoDB;
+
+insert into products(name,image) values('Television','tv.jpg');
+insert into products(name,image) values('Phone','phone.jpg');
+insert into products(name,image) values('Laptop','laptop.jpg')
