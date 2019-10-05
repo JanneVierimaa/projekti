@@ -9,7 +9,7 @@
       echo '<h3>Kirjaudu sisään</h3><br>';
       echo '<form class="" action="login.php" method="post">
     <input type="text" name="username" value="" placeholder="käyttäjänimi"> <br> <br>
-    <input type="text" name="password" value="" placeholder="salasana"> <br> <br>
+    <input type="password" name="password" value="" placeholder="salasana" required> <br> <br>
     <input type="submit" name="" value="Kirjaudu">
     </form>';
     }
