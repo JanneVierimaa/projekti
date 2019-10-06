@@ -94,6 +94,10 @@ body {
   margin-left: 80px;
   margin-right: 80px;
 }
+.tuote li
+{
+  list-style-type: none;
+}
 .adduser
 {
   margin-left: 80px;
