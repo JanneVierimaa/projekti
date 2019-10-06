@@ -3,7 +3,7 @@
 	{
 	 $dsn = "mysql:host=localhost;dbname=projekti";
 	 $db = new PDO ($dsn, "phpUser", "phpPass");
-	 // print ("Connected\n");
+	 print ("Connected\n");
 	}
 	catch (PDOException $e)
 	{

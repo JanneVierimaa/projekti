@@ -4,7 +4,7 @@ use projekti;
 
 
 
-CREATE TABLE IF NOT EXISTS `projekti`.`Asiakas` (
+CREATE TABLE IF NOT EXISTS `opisk_t8vija01`.`Asiakas` (
   `idAsiakas` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `etunimi` VARCHAR(45) NOT NULL,
   `sukunimi` VARCHAR(45) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `projekti`.`Asiakas` (
   UNIQUE INDEX `username_UNIQUE` (`username` ASC))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `projekti`.`Tuote` (
+CREATE TABLE IF NOT EXISTS `opisk_t8vija01`.`Tuote` (
   `idTuote` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `tuoteNimi` VARCHAR(100) NOT NULL,
   `tuotekuvaus` VARCHAR(455) NOT NULL,
@@ -23,6 +23,43 @@ CREATE TABLE IF NOT EXISTS `projekti`.`Tuote` (
   `kuva` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`idTuote`))
 ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `opisk_t8vija01`.`Ostoskori` (
+  `idOstoskori` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `idTuote` INT(10) UNSIGNED NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
+  `maara` INT(10) UNSIGNED NULL DEFAULT NULL,
+  PRIMARY KEY (`idOstoskori`),
+  INDEX `idTuote` (`idTuote` ASC),
+  INDEX `username` (`username` ASC),
+  CONSTRAINT `ostoskori_ibfk_1`
+    FOREIGN KEY (`idTuote`)
+    REFERENCES `opisk_t8vija01`.`Tuote` (`idTuote`)
+    ON UPDATE CASCADE,
+  CONSTRAINT `ostoskori_ibfk_2`
+    FOREIGN KEY (`username`)
+    REFERENCES `opisk_t8vija01`.`Asiakas` (`username`)
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 16
+DEFAULT CHARACTER SET = utf8;
+
+CREATE TABLE IF NOT EXISTS `opisk_t8vija01`.`Tilaukset` (
+  `idTilaukset` INT NOT NULL AUTO_INCREMENT,
+  `tilausPVM` DATE NOT NULL,
+  `tilausDATA` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`idTilaukset`))
+ENGINE = InnoDB;
+
+DELIMITER $$
+USE `projekti`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `opisk_t8vija01`.`Ostoskori_BEFORE_DELETE` BEFORE DELETE ON `Ostoskori` FOR EACH ROW
+BEGIN
+DECLARE str VARCHAR(255);
+     SET str=CONCAT('Tuotenro: ',OLD.idTuote,' käyttäjänimi: ',OLD.username,' määrä: ',OLD.maara);
+     INSERT INTO Tilaukset VALUES(NULL,NOW(),str);
+END$$
+DELIMITER ;
 
 
 insert into Asiakas values(1,'Teuvo','Testaaja','Testikatu1','tstuser','tstpass');
@@ -33,15 +70,3 @@ insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva) values('Laptop','The best la
 
 
 GRANT ALL ON projekti.* TO 'phpUser'@'localhost' IDENTIFIED BY 'phpPass';
-
-TÄHÄN ASTI ON TEHTY TOIMINNALLISUUS
----------------------------------------------------------------------------
-
-create table basket(
-id_basket INT auto_increment primary key,
-id_products INT,
-username VARCHAR(30),
-amount INT,
-foreign key(id_products) references products(id_products) on update cascade on delete restrict,
-foreign key(username) references user(username) on update cascade on delete restrict
-) Engine=InnoDB;

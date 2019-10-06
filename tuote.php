@@ -16,11 +16,11 @@
   				echo '<img src="images/'.$row['kuva'].'" alt="product image"> <br>';
   				if(isset($_SESSION['logged_in'])){
   					//echo '<a href="basket.php?id_products='.$row['id_products'].'">To basket</a>';
-  					echo '<form action="basket2.php" method="post">';
-  					echo '<label>Amount:</label>';
-  					echo '<input type="number" name="amount"><br>';
+  					echo '<form action="add_ostoskori.php" method="post">';
+  					echo '<label>Määrä:</label>';
+  					echo '<input type="number" name="maara"><br>';
   					echo '<input type="hidden" name="idTuote" value="'.$row['idTuote'].'"';
-  					echo '<br><input type="submit" value="Add to basket">';
+  					echo '<br><input type="submit" value="Lisää ostoskoriin">';
   					echo '</form>';
   				}
   				echo '</li>';
