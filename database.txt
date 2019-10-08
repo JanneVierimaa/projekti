@@ -1,9 +1,6 @@
-create database projekti;
 
-use projekti;
-
-
-
+---Tässä työssä käytetään Myslissä (mysli.oamk.fi) opisk_t8vija01 tietokantaa---
+--Luodaan Asiakas-taulu---
 CREATE TABLE IF NOT EXISTS `opisk_t8vija01`.`Asiakas` (
   `idAsiakas` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `etunimi` VARCHAR(45) NOT NULL,
@@ -15,14 +12,31 @@ CREATE TABLE IF NOT EXISTS `opisk_t8vija01`.`Asiakas` (
   UNIQUE INDEX `username_UNIQUE` (`username` ASC))
 ENGINE = InnoDB;
 
+---Luodaan Kategoria-taulu---
+CREATE TABLE IF NOT EXISTS `opisk_t8vija01`.`Kategoria` (
+  `idKategoria` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `katNimi` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idKategoria`))
+ENGINE = InnoDB;
+
+---Luodaan Tuote-taulu---
 CREATE TABLE IF NOT EXISTS `opisk_t8vija01`.`Tuote` (
-  `idTuote` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `idTuote` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `tuoteNimi` VARCHAR(100) NOT NULL,
   `tuotekuvaus` VARCHAR(455) NOT NULL,
   `hinta` DECIMAL(5,2) UNSIGNED NOT NULL,
   `kuva` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`idTuote`))
-ENGINE = InnoDB;
+  `idKategoria` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`idTuote`),
+  INDEX `idKategoria1_idx` (`idKategoria` ASC),
+  CONSTRAINT `idKategoria1`
+    FOREIGN KEY (`idKategoria`)
+    REFERENCES `opisk_t8vija01`.`Kategoria` (`idKategoria`)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `opisk_t8vija01`.`Ostoskori` (
   `idOstoskori` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -52,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `opisk_t8vija01`.`Tilaukset` (
 ENGINE = InnoDB;
 
 DELIMITER $$
-USE `projekti`$$
+USE `opisk_t8vija01`$$
 CREATE DEFINER = CURRENT_USER TRIGGER `opisk_t8vija01`.`Ostoskori_BEFORE_DELETE` BEFORE DELETE ON `Ostoskori` FOR EACH ROW
 BEGIN
 DECLARE str VARCHAR(255);
@@ -62,11 +76,14 @@ END$$
 DELIMITER ;
 
 
+
+
 insert into Asiakas values(1,'Teuvo','Testaaja','Testikatu1','tstuser','tstpass');
+insert into Kategoria(idKategoria,katNimi) values(1,'Televisiot');
+insert into Kategoria(idKategoria,katNimi) values(2,'Puhelimet');
+insert into Kategoria(idKategoria,katNimi) values(3,'Tietokoneet');
+insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Television','The best TV in the world',499,'tv.jpg',1);
+insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Phone','The best smartphone in the world',999,'phone.jpg',2);
+insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Laptop','The best laptop in the world',689,'laptop.jpg',3);
 
-insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva) values('Television','The best TV in the world',499,'tv.jpg');
-insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva) values('Phone','The best smartphone in the world',999,'phone.jpg');
-insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva) values('Laptop','The best laptop in the world',689,'laptop.jpg');
-
-
-GRANT ALL ON projekti.* TO 'phpUser'@'localhost' IDENTIFIED BY 'phpPass';
+insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Samsung','The best smartphone in the world',999,'phone.jpg',2);
