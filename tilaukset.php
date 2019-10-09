@@ -5,7 +5,7 @@
 if(isset($_SESSION['logged_in'])){
 $username=$_SESSION['username'];
 
-echo '<h2>Tähän mennessä tilaamasi tuotteet, '$username:'</h2>';
+echo '<h2>Tähän mennessä tilaamasi tuotteet</h2>';
 $sql1="SELECT * FROM Tilaukset WHERE username='$username'";
 $tilaus=$db->query($sql1);
 foreach ($tilaus as $row) {
