@@ -85,5 +85,15 @@ insert into Kategoria(idKategoria,katNimi) values(3,'Tietokoneet');
 insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Television','The best TV in the world',499,'tv.jpg',1);
 insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Phone','The best smartphone in the world',999,'phone.jpg',2);
 insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Laptop','The best laptop in the world',689,'laptop.jpg',3);
+insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('LG TV','Super good TV',789,'lgtv.jpg',1);
+insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Samsung TV','HyperSuper good TV',899,'samsungtv.jpg',1);
+insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Sony TV','Megahyper good TV',789,'sonytv.jpg',1);
+insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('iPhone','Overpriced and mediocre phone',999,'iphone.jpg',2);
+insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Oneplus','Flagship killer smartphone',799,'oneplus.jpg',2);
+insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Samsung','Just another good smartphone',999,'samsung.jpg',2);
+insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Chromebook','Good quality laptop',389,'chromebook.jpg',3);
+insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Lenovo','Business laptop',589,'lenovo.jpg',3);
+insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Macbook','Just another laptop',989,'macbook.jpg',3);
+in
 
 insert into Tuote(tuoteNimi,tuotekuvaus,hinta,kuva,idKategoria) values('Samsung','The best smartphone in the world',999,'phone.jpg',2);

@@ -5,7 +5,7 @@
  	 //$db = new PDO ($dsn, "phpUser", "phpPass");
 	 $dsn = "mysql:host=mysli.oamk.fi;dbname=opisk_t8vija01";
 	 $db = new PDO ($dsn, "t8vija01", "amorphis");
-	 print ("Connected\n");
+	 //print ("Connected\n");
 	}
 	catch (PDOException $e)
 	{

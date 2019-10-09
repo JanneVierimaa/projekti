@@ -36,9 +36,6 @@ $ostoskori=$db->query($sql);
              <input type="submit" name="" value="Tilaa">
              </form>';
 
-        echo' <form style="float:right" class="" action="clear_ostoskori.php" method="post">
-              <input type="submit" name="" value="Tyhjennä ostoskori">
-              </form><br>';
 
         echo' <form class="" action="tuote.php" method="post">
               <input type="submit" name="" value="Jatka shoppailua">
