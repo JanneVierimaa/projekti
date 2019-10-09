@@ -5,11 +5,13 @@
 if(isset($_SESSION['logged_in'])){
 $username=$_SESSION['username'];
 
-
-$sql1="SELECT * FROM Tilaukset WHERE tilausData LIKE '%käyttäjänimi: Janne%'";
+echo '<h2>Tähän mennessä tilaamasi tuotteet</h2>';
+$sql1="SELECT * FROM Tilaukset WHERE tilausDATA LIKE '%$username%'";
 $tilaus=$db->query($sql1);
 foreach ($tilaus as $row) {
-echo $row['tilausData'];
+echo $row['tilausPVM'].'   ';
+echo $row['tilausDATA'].'<br><br>';
+
 }
 }
 
