@@ -9,6 +9,7 @@ $username=$_SESSION['username'];
 $sql1="DELETE FROM Ostoskori
 WHERE username='$username'";
 $ostoskori=$db->query($sql1);
-
+echo 'Tilaus rekisteröity käyttäjänimellä: '.$username;
+header("Refresh:2;url=ostoskori.php");
 }
 ?>
