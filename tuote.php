@@ -1,7 +1,7 @@
   <?php include "menu.php"; ?>
   <?php include 'connection.php'; ?>
   <div class="tuote">
-  
+
 <?php
 if (!empty($_POST['Tuotteet'])) {
     $selected = $_POST['Tuotteet'];
@@ -43,12 +43,14 @@ $tuote=$db->query($sql);
   			foreach ($tuote as $row) {
   				echo '<li>';
   				echo $row['tuoteNimi'].'<br>';
-  				echo '<img src="images/'.$row['kuva'].'" alt="product image"> <br>';
+  				echo '<img src="images/'.$row['kuva'].'" alt="product image"> <br><br>';
+          echo $row['tuotekuvaus'].'<br><br>';
+          echo $row['hinta'].' €<br><br>';
   				if(isset($_SESSION['logged_in'])){
   					//echo '<a href="basket.php?id_products='.$row['id_products'].'">To basket</a>';
   					echo '<form action="add_ostoskori.php" method="post">';
   					echo '<label>Määrä:</label>';
-  					echo '<input type="number" name="maara"><br>';
+  					echo '<input type="number" min=1 name="maara"><br>';
   					echo '<input type="hidden" name="idTuote" value="'.$row['idTuote'].'"';
   					echo '<br><input type="submit" value="Lisää ostoskoriin">';
   					echo '</form>';
