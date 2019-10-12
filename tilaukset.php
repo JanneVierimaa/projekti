@@ -4,7 +4,7 @@
 //session_start();
 if(isset($_SESSION['logged_in'])){
 $username=$_SESSION['username'];
-echo '<h2>Omat tietosi: '
+echo '<h2>Omat tietosi:</h2><br>';
 $sql3="SELECT * FROM Asiakas WHERE username='$username'";
 $asiakas=$db->query($sql3);
 foreach ($asiakas as $row) {
