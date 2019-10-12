@@ -7,6 +7,7 @@
   //session_start();
   if(isset($_SESSION['logged_in'])) {
     echo '<h3>Tervetuloa '.$_SESSION['username'].'</h3>';
+    echo 'Voit nyt lisätä tuotteita ostoskoriin ja tilata niitä. Klikkaa tuotelistausta ja aloita shoppailu!'
   }
   else {
     echo '<p><h3>Tervetuloa Vieras!</h3><br><br><br>Rekisteröitymällä ja Kirjautumalla sisään pääset tekemään ostoksia<br><br>
