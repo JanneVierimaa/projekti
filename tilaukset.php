@@ -11,7 +11,7 @@ foreach ($asiakas as $row) {
 echo $row['etunimi'].'<br>';
 echo $row['sukunimi'].'<br><br>';
 echo $row['osoite'].'<br><br>';
-echo $row['username'].'<br><br><br>'
+echo $row['username'].'<br><br><br>';
 }
 
 echo '<h2>Tähän mennessä tilaamasi tuotteet</h2>';
